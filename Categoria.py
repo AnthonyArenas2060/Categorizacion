@@ -12,17 +12,16 @@ st.title("Subir un archivo de Excel")
 archivo = st.file_uploader("Elige un archivo de Excel", type=["xlsx"])
 data = pd.read_excel(archivo) if archivo else None
 
-    
+def limpiar_tweet(texto):
+    texto = texto.replace("\n", " ").replace("\\n", " ")
+    texto = re.sub(r"^RT\s+@\w+\s+", "", texto)   
+    texto = re.sub(r"@\w+", "", texto)            
+    texto = re.sub(r"https..*", "", texto)
+    texto = texto.strip()                      
+    return texto
+
 if archivo is not None:
     try:
-        def limpiar_tweet(texto):
-            texto = texto.replace("\n", " ").replace("\\n", " ")
-            texto = re.sub(r"^RT\s+@\w+\s+", "", texto)   
-            texto = re.sub(r"@\w+", "", texto)            
-            texto = re.sub(r"https..*", "", texto)
-            texto = texto.strip()                      
-            return texto
-    
         tweets = data['Full Text'].to_list()
         df = pd.DataFrame({"tweet": tweets})
         df["tweet_limpio"] = df["tweet"].apply(limpiar_tweet)
