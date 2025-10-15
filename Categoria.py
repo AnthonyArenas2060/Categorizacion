@@ -25,8 +25,26 @@ if archivo is not None:
         df["tweet_limpio"] = df["tweet"].apply(limpiar_tweet)
         coments_gente = df["tweet_limpio"].to_list()
         st.dataframe(coments_gente)
-
+        
+        MODELO_ZERO_SHOT = "MoritzLaurer/mDeBERTa-v3-base-mnli-xnli" 
     
+        clasificador = pipeline(
+            "zero-shot-classification",
+            model=MODELO_ZERO_SHOT,
+            tokenizer=MODELO_ZERO_SHOT
+        )
+    
+        comments = coments_gente
+    
+        candidate_labels = [
+            "salud (medicamentos)", 
+            "deporte (fútbol, jugador, defensa, delantero, equipo, gol, partido)",
+            "Recomendacion"
+        ]
+    
+        results = clasificador(comments, candidate_labels)
+        df = pd.DataFrame(results)
+        st.dataframe(df)
     
     except Exception as e:
         st.error(f"Ocurrió un error: {e}")
