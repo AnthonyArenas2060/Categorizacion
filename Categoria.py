@@ -28,10 +28,7 @@ if archivo is not None:
         
         MODELO_ZERO_SHOT = "MoritzLaurer/mDeBERTa-v3-base-mnli-xnli" 
     
-        clasificador = pipeline(
-            "zero-shot-classification",
-            model=MODELO_ZERO_SHOT,
-            tokenizer=MODELO_ZERO_SHOT)
+        clasificador = pipeline("zero-shot-classification",model=MODELO_ZERO_SHOT,tokenizer=MODELO_ZERO_SHOT)
     
         #comments = coments_gente
     
