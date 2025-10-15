@@ -15,16 +15,16 @@ if archivo is not None:
     try:
         tweets = data['Full Text'].to_list()
         df = pd.DataFrame({"tweet": tweets})
-        st.dataframe(df)
-        #def limpiar_tweet(texto):
-        #    texto = texto.replace("\n", " ").replace("\\n", " ")
-        #    texto = re.sub(r"^RT\s+@\w+\s+", "", texto)
-        #    texto = re.sub(r"@\w+", "", texto)
-        #    texto = re.sub(r"https..*", "", texto)
-        #    texto = texto.strip()
-        #   return texto
-        #df["tweet_limpio"] = df["tweet"].apply(limpiar_tweet)
-        #coments_gente = df["tweet_limpio"].to_list()
+        def limpiar_tweet(texto):
+            texto = texto.replace("\n", " ").replace("\\n", " ")
+            texto = re.sub(r"^RT\s+@\w+\s+", "", texto)
+            texto = re.sub(r"@\w+", "", texto)
+            texto = re.sub(r"https..*", "", texto)
+            texto = texto.strip()
+           return texto
+        df["tweet_limpio"] = df["tweet"].apply(limpiar_tweet)
+        coments_gente = df["tweet_limpio"].to_list()
+        st.dataframe(coments_gente)
 
     
     
