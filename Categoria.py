@@ -31,20 +31,15 @@ if archivo is not None:
         clasificador = pipeline(
             "zero-shot-classification",
             model=MODELO_ZERO_SHOT,
-            tokenizer=MODELO_ZERO_SHOT
-        )
+            tokenizer=MODELO_ZERO_SHOT)
     
-        comments = coments_gente
+        #comments = coments_gente
     
-        candidate_labels = [
-            "salud (medicamentos)", 
-            "deporte (fútbol, jugador, defensa, delantero, equipo, gol, partido)",
-            "Recomendacion"
-        ]
+        #candidate_labels = ["salud (medicamentos)", "deporte (fútbol, jugador, defensa, delantero, equipo, gol, partido)", "Recomendacion"]
     
-        results = clasificador(comments, candidate_labels)
-        df = pd.DataFrame(results)
-        st.dataframe(df)
+        #results = clasificador(comments, candidate_labels)
+        #df = pd.DataFrame(results)
+        #st.dataframe(df)
     
     except Exception as e:
         st.error(f"Ocurrió un error: {e}")
