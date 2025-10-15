@@ -21,7 +21,7 @@ if archivo is not None:
             texto = re.sub(r"@\w+", "", texto)
             texto = re.sub(r"https..*", "", texto)
             texto = texto.strip()
-           return texto
+            return texto
         df["tweet_limpio"] = df["tweet"].apply(limpiar_tweet)
         coments_gente = df["tweet_limpio"].to_list()
         st.dataframe(coments_gente)
