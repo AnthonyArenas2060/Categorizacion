@@ -14,12 +14,11 @@ data = pd.read_excel(archivo) if archivo else None
 
 def limpiar_tweet(texto):
     texto = texto.replace("\n", " ").replace("\\n", " ")
-    texto = re.sub(r"^RT\s+@\w+\s+", "", texto)   
-    texto = re.sub(r"@\w+", "", texto)            
+    texto = re.sub(r"^RT\s+@\w+\s+", "", texto)
+    texto = re.sub(r"@\w+", "", texto)
     texto = re.sub(r"https..*", "", texto)
-    texto = texto.strip()                      
+    texto = texto.strip()
     return texto
-
 if archivo is not None:
     try:
         tweets = data['Full Text'].to_list()
