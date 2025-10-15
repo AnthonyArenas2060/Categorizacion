@@ -7,7 +7,6 @@ import numpy as np
 import re
 
 st.title("Subir un archivo de Excel")
-
 # Crear el widget para subir archivos
 archivo = st.file_uploader("Elige un archivo de Excel", type=["xlsx"])
 data = pd.read_excel(archivo) if archivo else None
