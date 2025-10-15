@@ -1,6 +1,5 @@
 streamlit
 streamlit-authenticator
-facebook-sdk
 pandas
 matplotlib
 requests
@@ -9,3 +8,4 @@ torch
 tensorflow
 transformers
 tf-keras
+openpyxl
